@@ -1,0 +1,65 @@
+<h2>Resumen de Campañas</h2>
+
+<div class="row mt-4">
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body text-center">
+                <h5 class="card-title">Total Campañas</h5>
+                <h2>@ViewBag.Total</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-success">
+            <div class="card-body text-center">
+                <h5 class="card-title">Vigentes</h5>
+                <h2>@ViewBag.Vigentes</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body text-center">
+                <h5 class="card-title">Próximas</h5>
+                <h2>@ViewBag.Proximas</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-secondary">
+            <div class="card-body text-center">
+                <h5 class="card-title">Finalizadas</h5>
+                <h2>@ViewBag.Finalizadas</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-info">
+            <div class="card-body text-center">
+                <h5 class="card-title">Promedio Descuento</h5>
+                <h2>@ViewBag.PromedioDescuento%</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="mt-4">Campañas por Canal</h4>
+<table class="table table-bordered" style="max-width: 400px;">
+    <thead class="table-dark">
+        <tr>
+            <th>Canal</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.PorCanal)
+        {
+            <tr>
+                <td>@item.Canal</td>
+                <td>@item.Cantidad</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary mt-2">← Volver al listado</a>
