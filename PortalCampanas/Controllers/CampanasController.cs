@@ -16,7 +16,7 @@ namespace PortalCampanas.Controllers
         {
             var campanas = _service.Filtrar(categoria, estado);
 
-            ViewBag.Categorias = new List<string> { "Electro", "Hogar", "Moda", "Tecnología" };
+            ViewBag.Categorias = new List<string> { "Electro", "Hogar", "Moda", "Tecnología", "Deportes" };
             ViewBag.Estados = new List<string> { "Vigente", "Próxima", "Finalizada" };
             ViewBag.CategoriaSeleccionada = categoria;
             ViewBag.EstadoSeleccionado = estado;
