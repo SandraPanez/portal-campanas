@@ -30,5 +30,22 @@ namespace PortalCampanas.Controllers
             if (campana == null) return NotFound();
             return View(campana);
         }
+
+        // ACCIÓN NUEVA - Resumen
+        public IActionResult Resumen()
+        {
+            var todas = _service.ObtenerTodas();
+
+            ViewBag.Total = todas.Count;
+            ViewBag.Vigentes = todas.Count(c => c.Estado == "Vigente");
+            ViewBag.Proximas = todas.Count(c => c.Estado == "Próxima");
+            ViewBag.Finalizadas = todas.Count(c => c.Estado == "Finalizada");
+            ViewBag.PromedioDescuento = todas.Average(c => c.DescuentoPct).ToString("F1");
+            ViewBag.PorCanal = todas.GroupBy(c => c.Canal)
+                                    .Select(g => new { Canal = g.Key, Cantidad = g.Count() })
+                                    .ToList();
+
+            return View();
+        }
     }
 }
