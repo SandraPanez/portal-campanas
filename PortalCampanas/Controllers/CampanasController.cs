@@ -17,5 +17,12 @@ namespace PortalCampanas.Controllers
             var campanas = _service.ObtenerTodas();
             return View(campanas);
         }
+
+        public IActionResult Detalle(int id)
+        {
+            var campana = _service.ObtenerPorId(id);
+            if (campana == null) return NotFound();
+            return View(campana);
+        }
     }
 }

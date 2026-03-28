@@ -1,0 +1,18 @@
+@model PortalCampanas.Models.Campana
+
+<h2>Detalle de Campaña</h2>
+
+<div class="card" style="max-width: 600px;">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Nombre</h4>
+        <hr />
+        <p><strong>Categoría:</strong> @Model.Categoria</p>
+        <p><strong>Estado:</strong> @Model.Estado</p>
+        <p><strong>Canal:</strong> @Model.Canal</p>
+        <p><strong>Descuento:</strong> @Model.DescuentoPct%</p>
+        <p><strong>Fecha Inicio:</strong> @Model.FechaInicio.ToString("dd/MM/yyyy")</p>
+        <p><strong>Fecha Fin:</strong> @Model.FechaFin.ToString("dd/MM/yyyy")</p>
+        <p><strong>Descripción:</strong> @Model.Descripcion</p>
+        <a asp-action="Index" class="btn btn-secondary">← Volver al listado</a>
+    </div>
+</div>
