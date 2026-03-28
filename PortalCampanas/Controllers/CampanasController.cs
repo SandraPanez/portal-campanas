@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Mvc;
+using PortalCampanas.Services;
+
+namespace PortalCampanas.Controllers
+{
+    public class CampanasController : Controller
+    {
+        private readonly CampanaService _service;
+
+        public CampanasController(CampanaService service)
+        {
+            _service = service;
+        }
+
+        public IActionResult Index()
+        {
+            var campanas = _service.ObtenerTodas();
+            return View(campanas);
+        }
+    }
+}
