@@ -2,8 +2,41 @@
 
 <h2>Campañas Comerciales</h2>
 
-<table class="table table-bordered">
-    <thead>
+<!-- Formulario de filtros -->
+<form method="get" asp-action="Index" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <label class="form-label">Categoría</label>
+        <select name="categoria" class="form-select">
+            <option value="">-- Todas --</option>
+            @foreach (var cat in ViewBag.Categorias)
+            {
+                <option value="@cat" selected="@(ViewBag.CategoriaSeleccionada == cat ? "selected" : null)">
+                    @cat
+                </option>
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Estado</label>
+        <select name="estado" class="form-select">
+            <option value="">-- Todos --</option>
+            @foreach (var est in ViewBag.Estados)
+            {
+                <option value="@est" selected="@(ViewBag.EstadoSeleccionado == est ? "selected" : null)">
+                    @est
+                </option>
+            }
+        </select>
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary me-2">Filtrar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+    </div>
+</form>
+
+<!-- Tabla de campañas -->
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
         <tr>
             <th>Nombre</th>
             <th>Categoría</th>

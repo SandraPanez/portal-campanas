@@ -12,9 +12,15 @@ namespace PortalCampanas.Controllers
             _service = service;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string categoria, string estado)
         {
-            var campanas = _service.ObtenerTodas();
+            var campanas = _service.Filtrar(categoria, estado);
+
+            ViewBag.Categorias = new List<string> { "Electro", "Hogar", "Moda", "Tecnología" };
+            ViewBag.Estados = new List<string> { "Vigente", "Próxima", "Finalizada" };
+            ViewBag.CategoriaSeleccionada = categoria;
+            ViewBag.EstadoSeleccionado = estado;
+
             return View(campanas);
         }
 
