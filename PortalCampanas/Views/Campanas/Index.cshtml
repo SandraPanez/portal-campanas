@@ -1,0 +1,35 @@
+@model List<PortalCampanas.Models.Campana>
+
+<h2>Campañas Comerciales</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Canal</th>
+            <th>Descuento</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Nombre</td>
+                <td>@c.Categoria</td>
+                <td>@c.Estado</td>
+                <td>@c.Canal</td>
+                <td>@c.DescuentoPct%</td>
+                <td>@c.FechaInicio.ToString("dd/MM/yyyy")</td>
+                <td>@c.FechaFin.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Detalle" asp-route-id="@c.Id" class="btn btn-sm btn-primary">Ver detalle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
